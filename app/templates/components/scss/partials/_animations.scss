@@ -1,0 +1,89 @@
+.<%= prefix %>-animate {
+	$scale-extent: .1;
+
+	&.opaque {
+		&.with-scale { @extend %default-hardware-render; }
+		&.ng-enter, &.ng-move, &.ng-leave {
+			@extend %default-transitions;
+
+			&-stagger {
+				@include transition-delay( .1s );
+			}
+		}
+		&.ng-enter.ng-enter-active, &.ng-move.ng-move-active, &.ng-leave {
+			@extend %default-opaque;
+			&.with-scale { @include scale( 1, 1 ); }
+		}
+		&.ng-enter, &.ng-move, &.ng-leave.ng-leave-active {
+			@extend %default-transparent;
+			&.with-scale { @include scale( 1 - $scale-extent, 1 - $scale-extent ); }
+		}
+
+		&.in-place.ng-leave {
+			@extend %default-absolute;
+			@extend %default-tl;
+			@extend %default-whole-width;
+		}
+	}
+
+	&.mostly-opaque {
+		&.with-scale { @extend %default-hardware-render; }
+		&.ng-enter, &.ng-move, &.ng-leave {
+			@extend %default-transitions;
+
+			&-stagger {
+				@include transition-delay( .1s );
+			}
+		}
+		&.ng-enter.ng-enter-active, &.ng-move.ng-move-active, &.ng-leave {
+			@extend %default-mostly-opaque;
+			&.with-scale { @include scale( 1, 1 ); }
+		}
+		&.ng-enter, &.ng-move, &.ng-leave.ng-leave-active {
+			@extend %default-transparent;
+			&.with-scale { @include scale( 1 - $scale-extent, 1 - $scale-extent ); }
+		}
+
+		&.in-place.ng-leave {
+			@extend %default-absolute;
+			@extend %default-tl;
+			@extend %default-whole-width;
+		}
+	}
+
+	&.ng-hide {
+		&.with-scale { @extend %default-hardware-render; }
+		&-add, &-remove {
+			@extend %default-hardware-render;
+			@extend %default-transitions;
+			display: block !important;
+
+			&-stagger {
+				@include transition-delay( .1s );
+			}
+		}
+		&-remove {
+			@include transparent;
+			&.with-scale { @include scale( 1 - $scale-extent, 1 - $scale-extent ); }
+			&-active {
+				@include opaque;
+				&.with-scale { @include scale( 1, 1 ); }
+			}
+		}
+		&-add {
+			@include opaque;
+			&.with-scale { @include scale( 1, 1 ); }
+			&-active {
+				@include transparent;
+				&.with-scale { @include scale( 1 - $scale-extent, 1 - $scale-extent ); }
+
+				&.in-place {
+					@extend %default-absolute;
+					@extend %default-tl;
+					@extend %default-whole-width;
+				}
+			}
+		}
+	}
+	
+}

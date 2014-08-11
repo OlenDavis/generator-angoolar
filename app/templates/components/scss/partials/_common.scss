@@ -1,0 +1,223 @@
+@import "compass";
+
+@import "class_names";
+
+$default-style-spec-select       : false !global;
+$default-style-spec-hybrid-button: false !global;
+$default-style-spec-button       : false !global;
+
+$default-ratio-to: 5 !global;
+
+$default-shadow-primary-depth       : 1.5px !global;
+$default-shadow-shallow-depth-factor: .67 !global;
+$default-shadow-deep-depth-factor   : 4 !global;
+
+@import "common_theming_utilities";
+
+$legacy-support-for-ie: true !global;
+
+//////////////////////// COLOR DEFAULTS
+$blue      : #00ADEF !global;
+$red       : #E51B24 !global;
+$dark-grey : #444444 !global;
+$grey      : #CCCCCC !global;
+$light-grey: #ECECEC !global;
+$light-blue: #EEF7FC !global;
+
+$black-primary-colors     : make-colors() !global;
+$light-grey-primary-colors: make-colors() !global;
+$light-blue-primary-colors: make-colors() !global;
+$grey-primary-colors      : make-colors() !global;
+$blue-primary-colors      : make-colors() !global;
+$red-primary-colors       : make-colors() !global;
+
+$black-secondary-colors     : make-colors(( light:       black, dark:                     black )) !global;
+$light-grey-secondary-colors: make-colors(( light: $light-grey, dark: shade( $light-grey, 20% ) )) !global;
+$light-blue-secondary-colors: make-colors(( light: $light-blue, dark: shade( $light-blue, 20% ) )) !global;
+$grey-secondary-colors      : make-colors(( light:       $grey, dark: shade( $grey,       20% ) )) !global;
+$blue-secondary-colors      : make-colors(( light:       $blue, dark: shade( $blue,       20% ) )) !global;
+$red-secondary-colors       : make-colors(( light:        $red, dark: shade( $red,        20% ) )) !global;
+
+//////////////////////// BORDER DEFAULTS
+$default-border-radius: 3px !global;
+
+//////////////////////// TEXT DEFAULTS
+$default-base-font-size  : 14px !global;
+$default-base-line-height: 16px !global;
+$default-base-font-family: 'Open Sans', sans-serif !global;
+
+$round-to-nearest-half-line: true !global; // this is specific to the internals of Compass Vertical Rhythm
+
+$h1-font-size: 36px !global;
+$h2-font-size: 32px !global;
+$h3-font-size: 24px !global;
+$h4-font-size: 20px !global;
+$h5-font-size: 18px !global;
+$h6-font-size: 16px !global;
+$p-font-size : 14px !global;
+
+$h1-lines: $h1-font-size * 1.5 / ( 2 + $default-base-line-height ) !global; // this is the hacky way of getting to 1.2em; the point is, we should be using vertical rhythm explicitly, and just let all of these be true
+$h2-lines: $h2-font-size * 1.5 / ( 2 + $default-base-line-height ) !global; // this is the hacky way of getting to 1.2em; the point is, we should be using vertical rhythm explicitly, and just let all of these be true
+$h3-lines: $h3-font-size * 1.5 / ( 2 + $default-base-line-height ) !global; // this is the hacky way of getting to 1.2em; the point is, we should be using vertical rhythm explicitly, and just let all of these be true
+$h4-lines: $h4-font-size * 1.5 / ( 2 + $default-base-line-height ) !global; // this is the hacky way of getting to 1.2em; the point is, we should be using vertical rhythm explicitly, and just let all of these be true
+$h5-lines: $h5-font-size * 1.5 / ( 2 + $default-base-line-height ) !global; // this is the hacky way of getting to 1.2em; the point is, we should be using vertical rhythm explicitly, and just let all of these be true
+$h6-lines: $h6-font-size * 1.5 / ( 2 + $default-base-line-height ) !global; // this is the hacky way of getting to 1.2em; the point is, we should be using vertical rhythm explicitly, and just let all of these be true
+$p-lines : true;
+
+$default-style-spec-vertical-rhythm-text-styles: (
+	make-vertical-rhythm-text-style-spec(( class-name: 'h1', font-size: $h1-font-size, lines: $h1-lines, line-height-sized: true, )),
+	make-vertical-rhythm-text-style-spec(( class-name: 'h2', font-size: $h2-font-size, lines: $h2-lines, line-height-sized: true, )),
+	make-vertical-rhythm-text-style-spec(( class-name: 'h3', font-size: $h3-font-size, lines: $h3-lines, line-height-sized: true, )),
+	make-vertical-rhythm-text-style-spec(( class-name: 'h4', font-size: $h4-font-size, lines: $h4-lines, line-height-sized: true, )),
+	make-vertical-rhythm-text-style-spec(( class-name: 'h5', font-size: $h5-font-size, lines: $h5-lines, line-height-sized: true, line-height-factors: ( double-lined: 1.5 ), )),
+	make-vertical-rhythm-text-style-spec(( class-name: 'h6', font-size: $h6-font-size, lines: $h6-lines, line-height-sized: true, )),
+	make-vertical-rhythm-text-style-spec(( class-name:  'p', font-size:  $p-font-size, lines:  $p-lines, line-height-sized: true, line-height-factors: ( double-lined: 1.5 ), )),
+) !global;
+
+$default-style-spec-coloring     : map-merge( $default-style-spec-coloring,      ( with-when-hovered: true ) );
+$default-style-spec-text-coloring: map-merge( $default-style-spec-text-coloring, ( with-when-hovered: true ) );
+
+//////////////////////// THEME DECLARATIONS
+$default-theme: make-default-theme((
+	name       : 'default',
+	extends    : 'body',
+	style-specs: make-default-style-specs((
+		specific-value: (
+			width: (
+				( class-name: 'notifications',                value: 25em  ),
+				( class-name: 'video',                        value: 645px ),
+				( class-name: 'submission-sponsor-thumbnail', value: 10em  )
+			),
+			min-width : ( class-name: 'submission-tagger',            value: 23em ),
+			max-height: ( class-name: 'submission-thumbnail-content', value: 9em ),
+		),
+		target-specific-value: (
+			max-height: (
+				( class-name: 'gallery-submission-editing-controls', value: 10em,  with-when-hovered: true, only-with-whens: true ),
+				( class-name: 'gallery-editing-controls',            value: 20em,  with-when-hovered: true, only-with-whens: true )
+			)
+		),
+
+		above        : map-merge( $default-style-spec-above,         ( with-when-hovered: true ) ),
+		way-above    : map-merge( $default-style-spec-way-above,     ( with-when-hovered: true ) ),
+		way-way-above: map-merge( $default-style-spec-way-way-above, ( with-when-hovered: true ) ),
+		target-above : map-merge( $default-style-spec-target-above,  ( with-when-hovered: true, only-with-whens: true ) ),
+		
+		show-overflow: map-merge( $default-style-spec-show-overflow, ( with-when-hovered: true ) ),
+
+		no-margin: map-merge( $default-style-spec-no-margin, ( with-when-first: true, with-when-last: true ) ),
+
+		'transparent'            : map-merge( $default-style-spec-transparent,               ( with-when-hovered: true ) ),
+		mostly-transparent       : map-merge( $default-style-spec-mostly-transparent,        ( with-when-hovered: true ) ),
+		barely-transparent       : map-merge( $default-style-spec-barely-transparent,        ( with-when-hovered: true ) ),
+		opaque                   : map-merge( $default-style-spec-opaque,                    ( with-when-hovered: true, with-when-active: true ) ),
+		mostly-opaque            : map-merge( $default-style-spec-mostly-opaque,             ( with-when-hovered: true ) ),
+		barely-opaque            : map-merge( $default-style-spec-barely-opaque,             ( with-when-hovered: true ) ),
+		target-opaque            : map-merge( $default-style-spec-target-opaque,             ( with-when-hovered: true, only-with-whens: true ) ),
+		target-mostly-transparent: map-merge( $default-style-spec-target-mostly-transparent, ( max-nesting-id: 1, with-when-hovered: true, only-with-whens: true ) ),
+		target-barely-opaque     : map-merge( $default-style-spec-target-mostly-transparent, ( max-nesting-id: 2, with-when-hovered: true, only-with-whens: true ) ),
+		definitely-opaque        : ( with-when-hovered: true ),
+		hoverable                : map-merge( $default-style-spec-hoverable, ( max-nesting-id: 2 ) ),
+
+		shadow      : map-merge( $default-style-spec-shadow,       ( with-when-hovered: true ) ),
+		inset-shadow: map-merge( $default-style-spec-inset-shadow, ( with-when-hovered: true ) ),
+
+		bordered          : map-merge( $default-style-spec-bordered,           ( with-when-hovered: true ) ),
+		t-bordered        : map-merge( $default-style-spec-t-bordered,         ( with-when-hovered: true ) ),
+		r-bordered        : map-merge( $default-style-spec-r-bordered,         ( with-when-hovered: true ) ),
+		b-bordered        : map-merge( $default-style-spec-b-bordered,         ( with-when-hovered: true ) ),
+		l-bordered        : map-merge( $default-style-spec-l-bordered,         ( with-when-hovered: true ) ),
+		lr-bordered       : map-merge( $default-style-spec-lr-bordered,        ( with-when-hovered: true ) ),
+		tb-bordered       : map-merge( $default-style-spec-tb-bordered,        ( with-when-hovered: true ) ),
+		ltr-bordered      : map-merge( $default-style-spec-ltr-bordered,       ( with-when-hovered: true ) ),
+		lbr-bordered      : map-merge( $default-style-spec-lbr-bordered,       ( with-when-hovered: true ) ),
+		trb-bordered      : map-merge( $default-style-spec-trb-bordered,       ( with-when-hovered: true ) ),
+		blt-bordered      : map-merge( $default-style-spec-blt-bordered,       ( with-when-hovered: true ) ),
+		transparent-border: map-merge( $default-style-spec-transparent-border, ( with-when-hovered: true ) ),
+	)),
+)) !global;
+
+$black-theme: make-theme((
+	name            : 'black',
+	primary-colors  : $black-primary-colors,
+	secondary-colors: $black-secondary-colors,
+	style-specs     : (
+		coloring             : $default-style-spec-coloring,
+		mostly-sheer-coloring: $default-style-spec-mostly-sheer-coloring,
+	),
+)) !global;
+
+$light-grey-theme: make-theme((
+	name            : 'light-grey',
+	primary-colors  : $light-grey-primary-colors,
+	secondary-colors: $light-grey-secondary-colors,
+	style-specs     : (
+		coloring: $default-style-spec-coloring,
+		bordered: $default-style-spec-bordered,
+	),
+)) !global;
+
+$light-blue-theme: make-theme((
+	name            : 'light-blue',
+	primary-colors  : $light-blue-primary-colors,
+	secondary-colors: $light-blue-secondary-colors,
+	style-specs     : (
+		coloring: $default-style-spec-coloring,
+	),
+)) !global;
+
+$grey-theme: make-theme((
+	name            : 'grey',
+	primary-colors  : $grey-primary-colors,
+	secondary-colors: $grey-secondary-colors,
+	style-specs     : (
+		coloring          : $default-style-spec-coloring,
+		text-coloring     : $default-style-spec-text-coloring,
+		flat-button       : $default-style-spec-flat-button,
+		raised-flat-button: $default-style-spec-raised-flat-button,
+		sheer-coloring    : $default-style-spec-raised-flat-button,
+	),
+)) !global;
+
+$blue-theme: make-theme((
+	name            : 'blue',
+	primary-colors  : $blue-primary-colors,
+	secondary-colors: $blue-secondary-colors,
+	theme-spec      : make-theme-spec(( with-when-hovered: true )),
+	style-specs     : (
+		text-input        : $default-style-spec-text-input,
+		coloring          : $default-style-spec-coloring,
+		link-coloring     : $default-style-spec-link-coloring,
+		text-coloring     : $default-style-spec-text-coloring,
+		flat-button       : $default-style-spec-flat-button,
+		raised-flat-button: $default-style-spec-raised-flat-button,
+		flip-clock-wrapper: make-style-spec(),
+	),
+)) !global;
+
+$red-theme: make-theme((
+	name            : 'red',
+	primary-colors  : $red-primary-colors,
+	secondary-colors: $red-secondary-colors,
+	theme-spec      : make-theme-spec(( with-when-hovered: true )),
+	style-specs     : (
+		coloring          : $default-style-spec-coloring,
+		text-coloring     : $default-style-spec-text-coloring,
+		link-coloring     : $default-style-spec-link-coloring,
+		flat-button       : $default-style-spec-flat-button,
+		raised-flat-button: $default-style-spec-raised-flat-button,
+	),
+)) !global;
+
+//////////////////////// ANIMATION DEFAULTS
+$default-transition-function: ease-in-out !global;
+
+$default-perspective       : 50em !global;
+$default-origin-y          : 0% !global;
+$default-animation-duration: $default-transition-duration !global;
+
+@import "common_theming_modifiers";
+
+@import "class_mixins";
+
+@import "common_theming";

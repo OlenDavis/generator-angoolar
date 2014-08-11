@@ -1,0 +1,63 @@
+{
+	"name"             : "<%= name %>",
+	"version"          : "v0.0.0",
+	"prefix"           : "<%= prefix %>",
+	"dashedPrefix"     : "<%%= pkg.prefix %>-",
+	"ngApp"            : "<%%= pkg.prefix %><%%= pkg.name %>",
+	"environment"      : "development",
+	"liveReloadPort"   : "35729",
+	"buildDir"         : "build",
+	"almostBuiltDir"   : "almost_built",
+	"builtDir"         : "built",
+	"htmlTarget"       : "*.html",
+	"report"           : "min",
+	"coffeeDir"        : "coffee",
+	"scssDir"          : "scss",
+	"jsDir"            : "js",
+	"cssDir"           : "css",
+	"fontsDir"         : "fonts",
+	"imagesDir"        : "images",
+	"templatesDir"     : "templates",
+	"directivesDir"    : "directives",
+	"viewsDir"         : "views",
+	"taxonomyDir"      : "<%= appPath %>/scss",
+	"headSuffix"       : "head",
+	"tailSuffix"       : "tail",
+	"applicationConfig": {
+		"development": {
+			"type"               : "development",
+			"defaultScheme"      : "//",
+			"apiDomain"          : "localhost",
+			"staticFileDomain"   : "localhost",
+			"staticFileDirectory": "",
+			"staticFileSuffix"   : ""
+		},
+		"production": {
+			"type"               : "production",
+			"defaultScheme"      : "//",
+			"apiDomain"          : "<%= apiDomain =>",
+			"staticFileDomain"   : "<%= staticFileDomain =>",
+			"staticFileDirectory": "",
+			"staticFileSuffix"   : ""
+		}
+	},
+	"dependencies": {
+		"grunt-contrib-copy"     : "~0.4.1",
+		"grunt"                  : "~0.4.1",
+		"grunt-contrib-clean"    : "~0.4.1",
+		"grunt-contrib-watch"    : "~0.4.4",
+		"grunt-contrib-sass"     : "~0.4.1",
+		"grunt-contrib-coffee"   : "~0.7.0",
+		"grunt-rename"           : "~0.1.2",
+		"grunt-bump"             : "0.0.11",
+		"grunt-preprocess"       : "~2.3.0",
+		"grunt-contrib-uglify"   : "~0.2.2",
+		"grunt-contrib-cssmin"   : "~0.6.1",
+		"grunt-contrib-concat"   : "~0.3.0",
+		"grunt-modernizr"        : "~0.4.1",
+		"grunt-bless"            : "~0.1.1",
+		"grunt-angular-templates": "~0.5.3",
+		"grunt-html-build"       : "git+https://github.com/OlenDavis/grunt-html-build.git#a447afa4cdf420de8587ea2bd8b81341a4d92d3d",
+		"grunt-md5"              : "~0.1.11"
+	}
+}

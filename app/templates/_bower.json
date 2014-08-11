@@ -1,0 +1,7 @@
+{
+  "name": "<%= _.slugify(_.humanize(appname)) %>",
+  "private": true,
+  "dependencies": {
+    "angoolar": "~0.6.0"
+  }
+}

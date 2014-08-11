@@ -1,0 +1,7 @@
+@import "partials/common";
+
+@import "partials/structure";
+
+@include declare-theme($default-theme);
+
+@import "partials/animations";

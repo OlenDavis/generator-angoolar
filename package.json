@@ -1,0 +1,29 @@
+{
+  "name": "generator-angoolar",
+  "version": "0.0.0",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "OlenDavis/generator-angoolar",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": "https://github.com/OlenDavis"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "~0.16.0",
+    "yosay": "^0.1.0"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}

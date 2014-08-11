@@ -1,0 +1,35 @@
+@import "compass/reset";
+
+body {
+	-webkit-font-smoothing: subpixel-antialiased;//antialiased;//
+
+	-webkit-tap-highlight-color: rgba( white, 0 );
+	// This prevents the clicking links and whatnot from changing the color of the controls being tapped.
+	// This is particularly relevant for iOS.
+
+	// By default elements on the page aren't selectable:
+	@extend %default-not-selectable;
+	// but, elements one would semantically expect to be texty are:
+	a, span, p, h1, h2, h3, h4, h5, h6 {
+		@extend %default-selectable;
+	}
+
+	// Personal preference; may comment/uncomment at will, but perhaps copy/pastable sections should be made copy/pastable only when copying/pasting is intended.
+	// Again though, this is mostly helpful on iOS when users may not know they're long-clicking when they are, and then a copy popup puts them off - especially for web-appy sites.
+	
+	cursor: default;
+	
+	* {
+		// This will prevent the little dotted areas from showing up around links particularly on IE browsers, but elsewhere as well.
+		outline: none;
+	}
+}
+
+small { @extend %default-small-text; }
+b { @extend %default-bold; }
+i, em { @extend %default-italic; }
+u { @extend %default-underline; }
+
+input, textarea, select, button {
+	font: inherit;
+}
